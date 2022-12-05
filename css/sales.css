@@ -3,3 +3,8 @@ main {
   justify-content: space-around;
   font-size: 2rem;
 }
+
+h1 {
+  text-align: center;
+  font-size: 3rem;
+}

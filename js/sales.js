@@ -37,7 +37,7 @@ class Store {
     let listItem = document.createElement('li');
     list.appendChild(listItem);
     listItem.innerText = `Total: ${this.totalSales}`;
-  } 
+  }
 }
 
 const seattle = new Store('Seatle', 23, 65, 6.3);
@@ -45,14 +45,8 @@ const tokyo = new Store('Tokyo', 3, 24, 1.2);
 const dubai = new Store('Dubai', 11, 38, 3.7);
 const paris = new Store('Paris', 20, 38, 2.3);
 const lima = new Store('Lima', 2, 16, 4.6);
-seattle.generateSales();
-tokyo.generateSales();
-dubai.generateSales();
-paris.generateSales();
-lima.generateSales();
-
-seattle.render();
-tokyo.render();
-dubai.render();
-paris.render();
-lima.render();
+const cities = [seattle, tokyo, dubai, paris, lima];
+for (let city of cities) {
+  city.generateSales();
+  city.render();
+}
