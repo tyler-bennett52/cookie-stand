@@ -15,7 +15,8 @@ class Store {
   generateSales () {
     const sales = [];
     for (let i = 0; i < hours.length; i++) {
-      let cookiesPerHour = Math.floor(Math.random() * ((this.maxCust - this.minCust) + 1) * this.avgSales);
+      let customersPerHour = Math.floor(Math.random() * ((this.maxCust - this.minCust)) + this.minCust);
+      let cookiesPerHour = Math.floor(customersPerHour * this.avgSales);
       sales.push(cookiesPerHour);
     }
     this.hourlySales = sales;
