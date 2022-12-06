@@ -40,7 +40,7 @@ class Store {
   }
 }
 
-const seattle = new Store('Seatle', 23, 65, 6.3);
+const seattle = new Store('Seattle', 23, 65, 6.3);
 const tokyo = new Store('Tokyo', 3, 24, 1.2);
 const dubai = new Store('Dubai', 11, 38, 3.7);
 const paris = new Store('Paris', 20, 38, 2.3);
