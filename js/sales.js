@@ -2,7 +2,7 @@
 
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 console.log(hours);
-const main = document.querySelector('main');
+const main = document.querySelector('table');
 
 class Store {
   constructor (city, minCust, maxCust, avgSales) {
@@ -26,15 +26,15 @@ class Store {
     }
   }
   render () {
-    let list = document.createElement('ul');
+    let list = document.createElement('tr');
     main.appendChild(list);
     list.innerText = `${this.city}`;
     for (let i = 0; i < hours.length; i++) {
-      let listItem = document.createElement('li');
+      let listItem = document.createElement('td');
       list.appendChild(listItem);
-      listItem.innerText = `${hours[i]}: ${this.hourlySales[i]}`;
+      listItem.innerText = `${this.hourlySales[i]}`;
     }
-    let listItem = document.createElement('li');
+    let listItem = document.createElement('td');
     list.appendChild(listItem);
     listItem.innerText = `Total: ${this.totalSales}`;
   }
@@ -50,3 +50,16 @@ for (let city of cities) {
   city.generateSales();
   city.render();
 }
+
+let tableHeader = document.createElement('tr');
+let emptyHeader = document.createElement('th');
+tableHeader.appendChild(emptyHeader);
+main.prepend(tableHeader);
+for (let i = 0; i < hours.length; i++) {
+  let columnHeader = document.createElement('th');
+  columnHeader.innerText = hours[i];
+  tableHeader.appendChild(columnHeader);
+}
+let totalHeader = document.createElement('th');
+totalHeader.innerText = 'Totals';
+tableHeader.appendChild(totalHeader);
