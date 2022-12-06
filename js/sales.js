@@ -13,6 +13,27 @@ function createAppendWrite (element, parent, value = '') {
   tempElement.innerText = value;
   parent.appendChild(tempElement);
 }
+
+function createHeader () {
+  let tableHeader = document.createElement('tr');
+  createAppendWrite('th', tableHeader, 'Cities');
+  main.prepend(tableHeader);
+  for (let i = 0; i < hours.length; i++) {
+    createAppendWrite('th', tableHeader, hours[i]);
+  }
+  createAppendWrite('th', tableHeader, 'Daily Location Totals');
+}
+
+function createFooter () {
+  let tableFooter = document.createElement('tr');
+  createAppendWrite('th', tableFooter, 'Hourly Totals');
+  for (let hour of globalSales) {
+    bigTotal += hour;
+    createAppendWrite('th', tableFooter, hour);
+  }
+  createAppendWrite('th', tableFooter, `Global Daily ${bigTotal}`);
+  main.append(tableFooter);
+}
 // ****************************** Class Creation ************************
 class Store {
   constructor (city, minCust, maxCust, avgSales) {
@@ -23,6 +44,9 @@ class Store {
     this.storeHours = hours;
   }
   generateSales () {
+    if (cities.indexOf(this) === -1) {
+      cities.push(this);
+    }
     const sales = [];
     for (let i = 0; i < hours.length; i++) {
       let customersPerHour = Math.floor(Math.random() * ((this.maxCust - this.minCust)) + this.minCust);
@@ -58,19 +82,11 @@ for (let city of cities) {
   city.render();
 }
 // ************************* Render Labels ****************************************
-let tableHeader = document.createElement('tr');
-createAppendWrite('th', tableHeader, 'Cities');
-main.prepend(tableHeader);
-for (let i = 0; i < hours.length; i++) {
-  createAppendWrite('th', tableHeader, hours[i]);
-}
-createAppendWrite('th', tableHeader, 'Daily Location Totals');
 
-let tableFooter = document.createElement('tr');
-createAppendWrite('th', tableFooter, 'Hourly Totals');
-for (let hour of globalSales) {
-  bigTotal += hour;
-  createAppendWrite('th', tableFooter, hour);
-}
-createAppendWrite('th', tableFooter, `Global Daily ${bigTotal}`);
-main.append(tableFooter);
+
+createHeader();
+let dallas = new Store ('Dallas', 10, 10, 10);
+dallas.generateSales();
+dallas.render();
+createFooter();
+
