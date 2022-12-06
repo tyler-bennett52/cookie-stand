@@ -1,8 +1,9 @@
 'use strict';
 
-const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+// const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+const hours = ['6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'];
 const globalSales = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-let bigTotal = 0
+let bigTotal = 0;
 console.log(hours);
 const main = document.querySelector('table');
 
@@ -64,20 +65,21 @@ for (let i = 0; i < hours.length; i++) {
   tableHeader.appendChild(columnHeader);
 }
 let totalHeader = document.createElement('th');
-totalHeader.innerText = 'Totals';
+totalHeader.innerText = 'Daily Location Totals';
 tableHeader.appendChild(totalHeader);
 
 
 let tableFooter = document.createElement('tr');
 let emptyFooter = document.createElement('th');
+emptyFooter.innerText = 'Hourly Totals';
 tableFooter.appendChild(emptyFooter);
 for (let hour of globalSales) {
-  bigTotal += hour
+  bigTotal += hour;
   let columnFooter = document.createElement('th');
   columnFooter.innerText = hour;
   tableFooter.appendChild(columnFooter);
 }
 let totalFooter = document.createElement('th');
-totalFooter.innerText = `Total: ${bigTotal}`;
+totalFooter.innerText = `Global Daily: ${bigTotal}`;
 tableFooter.appendChild(totalFooter);
 main.append(tableFooter);

@@ -15,6 +15,11 @@ td {
 }
 
 tr {
+  font-weight: 400;
+
+}
+
+th {
   font-weight: 600;
 }
 
