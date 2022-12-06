@@ -60,3 +60,5 @@ button:hover{
 section {
   display: flex;
 }
+
+.hide {display: none;}

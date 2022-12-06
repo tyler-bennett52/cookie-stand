@@ -1,26 +1,37 @@
 .hero {
-  background-color: teal;
+  /* background-color: teal; */
+  background: linear-gradient(180deg, rgb(1, 63, 63) 0%, teal);
   color: goldenrod;
   height: 50vh;
   position:relative
 }
-
+.img-container {
+  width: fit-content;
+  position: absolute;
+  top: 5%;
+  left: 10%
+}
+.img-container>img {
+  display: inline;
+  opacity: .5;
+}
 h1 {
   font-size: 5rem;
-  text-align: center;
-  margin: 0 auto;
+  position: absolute;
+  bottom: 0;
+  left: 20vw;
 }
 #subtitle {
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   position: absolute;
-  top: 0px;
+  top: 16%;
   left: 50%;
 }
 
 #subtitle-offset{
-  font-size: 3.3rem;
+  font-size: 3.6rem;
   position: absolute;
-  top: 15%;
+  top: 25%;
   left: 55%;
 }
 .curious {
@@ -35,6 +46,8 @@ nav {
   width: 100%;
   background: linear-gradient(180deg, teal 0%, rgb(208, 145, 9) 100%);
   justify-content: space-between;
+  position: sticky;
+  top: 0;
 }
 
 ul, li {display: inline;}
@@ -48,8 +61,27 @@ ul {
 
 a {color: rgb(223, 143, 30);}
 
-@media screen and (max-width: 1000px) {
-  #subtitle, #subtitle-offset {
+main{
+  background: linear-gradient(180deg, rgb(208, 145, 9), rgb(194, 131, 142) 100%);
+}
+
+.card{
+  width: 25%;
+  border: 1px black solid;
+}
+
+.card>h3 {
+  text-align: center;
+  color: teal;
+  font-size: 2rem;
+
+}
+
+@media screen and (max-width: 1100px) {
+  #subtitle, #subtitle-offset, .curious, .img-container {
     display: none;
+  }
+  h1 {
+    top: 25%;
   }
 }
