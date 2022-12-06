@@ -1,6 +1,8 @@
 'use strict';
 
-let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+const globalSales = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+let bigTotal = 0
 console.log(hours);
 const main = document.querySelector('table');
 
@@ -17,6 +19,7 @@ class Store {
     for (let i = 0; i < hours.length; i++) {
       let customersPerHour = Math.floor(Math.random() * ((this.maxCust - this.minCust)) + this.minCust);
       let cookiesPerHour = Math.floor(customersPerHour * this.avgSales);
+      globalSales[i] += cookiesPerHour;
       sales.push(cookiesPerHour);
     }
     this.hourlySales = sales;
@@ -63,3 +66,18 @@ for (let i = 0; i < hours.length; i++) {
 let totalHeader = document.createElement('th');
 totalHeader.innerText = 'Totals';
 tableHeader.appendChild(totalHeader);
+
+
+let tableFooter = document.createElement('tr');
+let emptyFooter = document.createElement('th');
+tableFooter.appendChild(emptyFooter);
+for (let hour of globalSales) {
+  bigTotal += hour
+  let columnFooter = document.createElement('th');
+  columnFooter.innerText = hour;
+  tableFooter.appendChild(columnFooter);
+}
+let totalFooter = document.createElement('th');
+totalFooter.innerText = `Total: ${bigTotal}`;
+tableFooter.appendChild(totalFooter);
+main.append(tableFooter);
