@@ -1,11 +1,33 @@
-img {
-  width: 12%;
-  padding: .8rem;
+.hero {
+  background-color: teal;
+  color: goldenrod;
+  height: 50vh;
+  position:relative
 }
 
-#flipper {
-  transform: scaleX(-1);
+h1 {
+  font-size: 5rem;
+  text-align: center;
+  margin: 0 auto;
 }
+#subtitle {
+  font-size: 2.8rem;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+}
+
+#subtitle-offset{
+  font-size: 3.3rem;
+  position: absolute;
+  top: 15%;
+  left: 55%;
+}
+.curious {
+  font-size: 2rem
+}
+.logo-img {width: 15%; padding: .8rem;}
+#flipper {transform: scaleX(-1);}
 
 nav {
   display: flex;
@@ -15,9 +37,7 @@ nav {
   justify-content: space-between;
 }
 
-ul, li {
-  display: inline;
-}
+ul, li {display: inline;}
 
 ul {
   font-size: 1.8rem;
@@ -26,6 +46,10 @@ ul {
   justify-content: space-between;
 }
 
-a {
-  color: rgb(223, 143, 30);
+a {color: rgb(223, 143, 30);}
+
+@media screen and (max-width: 1000px) {
+  #subtitle, #subtitle-offset {
+    display: none;
+  }
 }
