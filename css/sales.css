@@ -9,10 +9,24 @@ h1 {
   font-size: 3rem;
 }
 
-ul {
-  font-weight: bold;
+td {
+  border: 2px black solid;
+  font-weight: 100;
 }
 
-li {
-  font-weight: 200;
+tr {
+  font-weight: 600;
+}
+
+table {
+  width:100%;
+  border-collapse: collapse;
+  border: 1px black solid;
+}
+
+tr:nth-of-type(odd) {
+  background-color: hsl(180, 60%, 44%);
+}
+tr:nth-of-type(even) {
+  background-color: hsl(180, 60%, 74%);
 }
