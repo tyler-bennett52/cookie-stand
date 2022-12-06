@@ -5,6 +5,7 @@ const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm',
 const globalSales = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 let bigTotal = 0;
 console.log(hours);
+const tempBtn = document.querySelector('button');
 const main = document.querySelector('table');
 
 // ****************** DRY Functions ****************************************
@@ -27,6 +28,7 @@ function createHeader () {
 function createFooter () {
   let tableFooter = document.createElement('tr');
   createAppendWrite('th', tableFooter, 'Hourly Totals');
+  bigTotal = 0;
   for (let hour of globalSales) {
     bigTotal += hour;
     createAppendWrite('th', tableFooter, hour);
@@ -85,8 +87,15 @@ for (let city of cities) {
 
 
 createHeader();
-let dallas = new Store ('Dallas', 10, 10, 10);
-dallas.generateSales();
-dallas.render();
+// let dallas = new Store ('Dallas', 10, 10, 10);
+// dallas.generateSales();
+// dallas.render();
 createFooter();
 
+tempBtn.addEventListener('click', () => {
+  const dallas = new Store ('Dallas', 10, 10, 10);
+  main.deleteRow(-1);
+  dallas.generateSales();
+  dallas.render();
+  createFooter();
+});
