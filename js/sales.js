@@ -1,12 +1,19 @@
 'use strict';
-
-// const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-const hours = ['6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'];
+// ********************* Globals ****************************************
+const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+// const hours = ['6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'];
 const globalSales = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 let bigTotal = 0;
 console.log(hours);
 const main = document.querySelector('table');
 
+// ****************** DRY Functions ****************************************
+function createAppendWrite (element, parent, value = '') {
+  let tempElement = document.createElement(element);
+  tempElement.innerText = value;
+  parent.appendChild(tempElement);
+}
+// ****************************** Class Creation ************************
 class Store {
   constructor (city, minCust, maxCust, avgSales) {
     this.city = city;
@@ -34,16 +41,12 @@ class Store {
     main.appendChild(list);
     list.innerText = `${this.city}`;
     for (let i = 0; i < hours.length; i++) {
-      let listItem = document.createElement('td');
-      list.appendChild(listItem);
-      listItem.innerText = `${this.hourlySales[i]}`;
+      createAppendWrite('td', list, `${this.hourlySales[i]}`);
     }
-    let listItem = document.createElement('td');
-    list.appendChild(listItem);
-    listItem.innerText = `Total: ${this.totalSales}`;
+    createAppendWrite('td', list, `Total: ${this.totalSales}`);
   }
 }
-
+// ******************** Create Objects, Run Methods *****************************
 const seattle = new Store('Seattle', 23, 65, 6.3);
 const tokyo = new Store('Tokyo', 3, 24, 1.2);
 const dubai = new Store('Dubai', 11, 38, 3.7);
@@ -54,32 +57,20 @@ for (let city of cities) {
   city.generateSales();
   city.render();
 }
-
+// ************************* Render Labels ****************************************
 let tableHeader = document.createElement('tr');
-let emptyHeader = document.createElement('th');
-tableHeader.appendChild(emptyHeader);
+createAppendWrite('th', tableHeader, 'Cities');
 main.prepend(tableHeader);
 for (let i = 0; i < hours.length; i++) {
-  let columnHeader = document.createElement('th');
-  columnHeader.innerText = hours[i];
-  tableHeader.appendChild(columnHeader);
+  createAppendWrite('th', tableHeader, hours[i]);
 }
-let totalHeader = document.createElement('th');
-totalHeader.innerText = 'Daily Location Totals';
-tableHeader.appendChild(totalHeader);
-
+createAppendWrite('th', tableHeader, 'Daily Location Totals');
 
 let tableFooter = document.createElement('tr');
-let emptyFooter = document.createElement('th');
-emptyFooter.innerText = 'Hourly Totals';
-tableFooter.appendChild(emptyFooter);
+createAppendWrite('th', tableFooter, 'Hourly Totals');
 for (let hour of globalSales) {
   bigTotal += hour;
-  let columnFooter = document.createElement('th');
-  columnFooter.innerText = hour;
-  tableFooter.appendChild(columnFooter);
+  createAppendWrite('th', tableFooter, hour);
 }
-let totalFooter = document.createElement('th');
-totalFooter.innerText = `Global Daily: ${bigTotal}`;
-tableFooter.appendChild(totalFooter);
+createAppendWrite('th', tableFooter, `Global Daily ${bigTotal}`);
 main.append(tableFooter);
