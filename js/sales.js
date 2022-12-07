@@ -52,7 +52,7 @@ class Store {
     }
     const sales = [];
     for (let i = 0; i < hours.length; i++) {
-      let customersPerHour = Math.floor(Math.random() * ((this.maxCust - this.minCust)) + this.minCust);
+      let customersPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
       let cookiesPerHour = Math.floor(customersPerHour * this.avgSales);
       globalSales[i] += cookiesPerHour;
       sales.push(cookiesPerHour);
@@ -91,7 +91,7 @@ createFooter();
 // ****************************** Add Interactive Components ****************************************
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  let tempStore = new Store (inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value);
+  let tempStore = new Store (inputs[0].value, +inputs[1].value, +inputs[2].value, +inputs[3].value);
   main.deleteRow(-1);
   tempStore.generateSales();
   tempStore.render();
