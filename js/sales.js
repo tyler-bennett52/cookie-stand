@@ -4,7 +4,6 @@
 const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 const globalSales = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 let bigTotal = 0;
-const submitBtn = document.querySelector('button');
 const main = document.querySelector('table');
 const inputs = document.querySelectorAll('input');
 const form = document.querySelector('form');
@@ -90,12 +89,8 @@ for (let city of cities) {
 createHeader();
 createFooter();
 // ****************************** Add Interactive Components ****************************************
-
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  for (let input of inputs) {
-    console.log(typeof(input.value));
-  }
   let tempStore = new Store (inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value);
   main.deleteRow(-1);
   tempStore.generateSales();
