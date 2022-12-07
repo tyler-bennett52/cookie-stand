@@ -101,3 +101,4 @@ tempBtn.addEventListener('click', () => {
   createFooter();
   tempBtn.classList.toggle('hide');
 });
+

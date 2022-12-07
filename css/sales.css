@@ -1,3 +1,5 @@
+body {margin: 0;}
+
 main {
   display: flex;
   justify-content: space-around;
@@ -9,21 +11,38 @@ h1 {
   font-size: 3rem;
 }
 
+.logo-img {width: 15%; padding: .8rem;}
+#flipper {transform: scaleX(-1);}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: linear-gradient(180deg, teal 0%, rgb(208, 145, 9) 100%);
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+}
+
+ul, li {display: inline;}
+
+ul {
+  font-size: 1.8rem;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+a {color: rgb(223, 143, 30); font-family: Georgia, 'Times New Roman', Times, serif;}
+
 td {
   border: 1px black solid;
   font-weight: 100;
   padding: 5px;
 }
 
-tr {
-  font-weight: 400;
-  border: 1px black solid;
-
-}
-
-th {
-  font-weight: 400;
-  border: 1px black solid;
+tr {font-weight: 400; border: 1px black solid;}
+th {font-weight: 400; border: 1px black solid;
 }
 
 table {
@@ -31,14 +50,11 @@ table {
   border-collapse: collapse;
   border: 1px black solid;
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-tr:nth-of-type(odd) {
-  background-color: hsl(180, 60%, 44%);
-}
-tr:nth-of-type(even) {
-  background-color: hsl(180, 60%, 74%);
-}
+tr:nth-of-type(odd) {background-color: hsl(180, 60%, 44%);}
+tr:nth-of-type(even) {background-color: hsl(180, 60%, 74%);}
 
 button {
   margin: 10px auto;
@@ -56,9 +72,5 @@ button:hover{
   color: white;
   transition: .8s;
 }
-
-section {
-  display: flex;
-}
-
+section {display: flex;}
 .hide {display: none;}
