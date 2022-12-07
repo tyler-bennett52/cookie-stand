@@ -5,10 +5,11 @@ const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm',
 // const hours = ['6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'];
 const globalSales = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 let bigTotal = 0;
-console.log(hours);
-const tempBtn = document.querySelector('button');
+const submitBtn = document.querySelector('button');
 const main = document.querySelector('table');
-
+const inputs = document.querySelectorAll('input');
+const form = document.querySelector('form');
+// THIS IS EXPERIMENT, CHANGE INPUT TO FORM
 // ****************** DRY Functions ****************************************
 
 function createAppendWrite (element, parent, value = '') {
@@ -93,12 +94,15 @@ createFooter();
 
 // ****************************** Add Interactive Components ****************************************
 
-tempBtn.addEventListener('click', () => {
+form.addEventListener('click', (e) => {
+  e.preventDefault();
+  for (let input of inputs) {
+    console.log(input.value);
+  }
   const dallas = new Store ('Dallas', 10, 10, 10);
   main.deleteRow(-1);
   dallas.generateSales();
   dallas.render();
   createFooter();
-  tempBtn.classList.toggle('hide');
 });
 
