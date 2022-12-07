@@ -2,14 +2,12 @@
 // ********************* Globals ****************************************
 
 const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-// const hours = ['6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'];
 const globalSales = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 let bigTotal = 0;
 const submitBtn = document.querySelector('button');
 const main = document.querySelector('table');
 const inputs = document.querySelectorAll('input');
 const form = document.querySelector('form');
-// THIS IS EXPERIMENT, CHANGE INPUT TO FORM
 // ****************** DRY Functions ****************************************
 
 function createAppendWrite (element, parent, value = '') {
@@ -91,18 +89,16 @@ for (let city of cities) {
 // ************************* Render Labels ****************************************
 createHeader();
 createFooter();
-
 // ****************************** Add Interactive Components ****************************************
 
-form.addEventListener('click', (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
   for (let input of inputs) {
-    console.log(input.value);
+    console.log(typeof(input.value));
   }
-  const dallas = new Store ('Dallas', 10, 10, 10);
+  let tempStore = new Store (inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value);
   main.deleteRow(-1);
-  dallas.generateSales();
-  dallas.render();
+  tempStore.generateSales();
+  tempStore.render();
   createFooter();
 });
-
