@@ -19,7 +19,8 @@ h1 {
   font-size: 5rem;
   position: absolute;
   bottom: 0;
-  left: 20vw;
+  left: 20%;
+  bottom:0;
 }
 #subtitle {
   font-size: 2.5rem;
@@ -35,7 +36,7 @@ h1 {
   left: 55%;
 }
 .curious {
-  font-size: 2rem
+  font-size: 2rem;
 }
 .logo-img {width: 15%; padding: .8rem;}
 #flipper {transform: scaleX(-1);}
@@ -66,8 +67,13 @@ main{
 }
 
 .card{
-  width: 25%;
+  width: 45%;
   border: 1px black solid;
+}
+
+.card>img {
+  float: left;
+  margin-right: 3em;
 }
 
 .card>h3 {
@@ -75,6 +81,13 @@ main{
   color: teal;
   font-size: 2rem;
 
+}
+
+.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: space-around;
 }
 
 @media screen and (max-width: 1100px) {
