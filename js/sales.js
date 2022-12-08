@@ -92,7 +92,6 @@ createFooter();
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   for (let i = 0; i < cities.length; i++) {
-    console.log(cities[i].city)
     if (cities[i].city === inputs[0].value) {
       return alert('Sorry Pat, we already have a store in that city.');
     }
@@ -103,32 +102,3 @@ form.addEventListener('submit', (e) => {
   tempStore.render();
   createFooter();
 });
-
-const table2 = document.querySelector('#table2');
-const grid = [['Cities', ...hours, 'Daily Location Totals']];
-const stretchText = document.querySelector('p');
-for (let city of cities) {
-  grid.push([city.city, ...city.hourlySales, `Total: ${city.totalSales}`]);
-}
-for (let row of grid) {
-  createAppendWrite('p', stretchText, row);
-}
-console.log(grid);
-
-for (let i = 0; i < grid.length; i++ ) {
-  if (i === 0) {
-    let tempHeaderRow = document.createElement('tr');
-    table2.appendChild(tempHeaderRow);
-    for (let j = 0; j < grid[i].length; j++) {
-      let tempHeader = document.createElement('th');
-      tempHeader.innerText = grid[i][j];
-      tempHeaderRow.appendChild(tempHeader);
-    }
-  } else {
-    let tempRow = document.createElement('tr');
-    table2.appendChild(tempRow);
-    for (let j = 0; j < grid[i].length; j++) {
-      createAppendWrite('td', tempRow, grid[i][j]);
-    }
-  }
-}
