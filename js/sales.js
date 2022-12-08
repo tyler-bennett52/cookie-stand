@@ -91,11 +91,6 @@ createFooter();
 // ****************************** Add Interactive Components ****************************************
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  for (let i = 0; i < cities.length; i++) {
-    if (cities[i].city === inputs[0].value) {
-      return alert('Sorry Pat, we already have a store in that city.');
-    }
-  }
   let tempStore = new Store (inputs[0].value, +inputs[1].value, +inputs[2].value, +inputs[3].value);
   main.deleteRow(-1);
   tempStore.generateSales();

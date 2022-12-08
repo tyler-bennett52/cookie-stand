@@ -48,8 +48,8 @@ td {
 
 tr {font-weight: 400; border: 1px black solid;}
 th {font-weight: 400; border: 1px black solid;}
-td:hover{background-color: pink;}
-th:hover{background-color: pink;}
+td:hover{background-color: pink; cursor:cell;}
+th:hover{background-color: pink; cursor:cell;}
 
 
 table {
