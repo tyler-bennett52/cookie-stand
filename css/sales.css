@@ -1,7 +1,7 @@
 body {
   margin: 0;
   background: linear-gradient(180deg, goldenrod, rgb(194, 131, 142) 100%);
-  height: 110vh;
+  height: 115vh;
 }
 
 main {
@@ -47,8 +47,10 @@ td {
 }
 
 tr {font-weight: 400; border: 1px black solid;}
-th {font-weight: 400; border: 1px black solid;
-}
+th {font-weight: 400; border: 1px black solid;}
+td:hover{background-color: pink;}
+th:hover{background-color: pink;}
+
 
 table {
   width:100%;
@@ -93,3 +95,5 @@ input {
   font-size: 1.3rem;
   padding-left: 10px;
 }
+
+footer {background: linear-gradient(180deg, rgb(194, 131, 142), rgb(201, 144, 153) 100%);}
