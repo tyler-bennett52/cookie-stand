@@ -1,6 +1,5 @@
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat';
-}
+h1, h2, h3, h4, h5, h6 {font-family: 'Montserrat';}
+
 .hero {
   /* background-color: teal; */
   background: linear-gradient(180deg, rgb(1, 63, 63) 0%, teal);
@@ -20,10 +19,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 {
   font-size: 5rem;
+  width: 100%;
+  text-align: center;
   position: absolute;
   bottom: 0;
-  left: 12%;
-  bottom:0;
 }
 #subtitle {
   font-size: 2.5rem;

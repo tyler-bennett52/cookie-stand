@@ -2,13 +2,11 @@
 // ********************* Globals ****************************************
 
 const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-// const hours = ['6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'];
 const globalSales = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 let bigTotal = 0;
-console.log(hours);
-const tempBtn = document.querySelector('button');
 const main = document.querySelector('table');
-
+const inputs = document.querySelectorAll('input');
+const form = document.querySelector('form');
 // ****************** DRY Functions ****************************************
 
 function createAppendWrite (element, parent, value = '') {
@@ -54,7 +52,7 @@ class Store {
     }
     const sales = [];
     for (let i = 0; i < hours.length; i++) {
-      let customersPerHour = Math.floor(Math.random() * ((this.maxCust - this.minCust)) + this.minCust);
+      let customersPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
       let cookiesPerHour = Math.floor(customersPerHour * this.avgSales);
       globalSales[i] += cookiesPerHour;
       sales.push(cookiesPerHour);
@@ -90,15 +88,12 @@ for (let city of cities) {
 // ************************* Render Labels ****************************************
 createHeader();
 createFooter();
-
 // ****************************** Add Interactive Components ****************************************
-
-tempBtn.addEventListener('click', () => {
-  const dallas = new Store ('Dallas', 10, 10, 10);
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  let tempStore = new Store (inputs[0].value, +inputs[1].value, +inputs[2].value, +inputs[3].value);
   main.deleteRow(-1);
-  dallas.generateSales();
-  dallas.render();
+  tempStore.generateSales();
+  tempStore.render();
   createFooter();
-  tempBtn.classList.toggle('hide');
 });
-
